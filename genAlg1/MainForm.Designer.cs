@@ -37,11 +37,13 @@
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.issueTB = new System.Windows.Forms.TextBox();
             this.issueL = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.deliveryTB = new System.Windows.Forms.TextBox();
             this.calculateB = new System.Windows.Forms.Button();
             this.matrixB = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.countPointNUD = new System.Windows.Forms.NumericUpDown();
+            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
+            this.routeTB = new System.Windows.Forms.TextBox();
             deliveryL = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countPointNUD)).BeginInit();
@@ -80,20 +82,23 @@
             // новыйToolStripMenuItem
             // 
             this.новыйToolStripMenuItem.Name = "новыйToolStripMenuItem";
-            this.новыйToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.новыйToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.новыйToolStripMenuItem.Text = "Новый";
+            this.новыйToolStripMenuItem.Click += new System.EventHandler(this.новыйToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
@@ -117,13 +122,16 @@
             this.issueL.TabIndex = 2;
             this.issueL.Text = "Адрес пункта выдачи";
             // 
-            // textBox1
+            // deliveryTB
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 102);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(168, 135);
-            this.textBox1.TabIndex = 4;
+            this.deliveryTB.AcceptsReturn = true;
+            this.deliveryTB.Location = new System.Drawing.Point(16, 102);
+            this.deliveryTB.Multiline = true;
+            this.deliveryTB.Name = "deliveryTB";
+            this.deliveryTB.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.deliveryTB.Size = new System.Drawing.Size(168, 135);
+            this.deliveryTB.TabIndex = 4;
+            this.deliveryTB.WordWrap = false;
             // 
             // calculateB
             // 
@@ -133,6 +141,7 @@
             this.calculateB.TabIndex = 5;
             this.calculateB.Text = "Построение маршрута";
             this.calculateB.UseVisualStyleBackColor = true;
+            this.calculateB.Click += new System.EventHandler(this.calculateB_Click);
             // 
             // matrixB
             // 
@@ -165,16 +174,37 @@
             0,
             0});
             // 
+            // domainUpDown1
+            // 
+            this.domainUpDown1.Location = new System.Drawing.Point(16, 365);
+            this.domainUpDown1.Name = "domainUpDown1";
+            this.domainUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.domainUpDown1.TabIndex = 10;
+            this.domainUpDown1.Text = "domainUpDown1";
+            // 
+            // routeTB
+            // 
+            this.routeTB.AcceptsReturn = true;
+            this.routeTB.Location = new System.Drawing.Point(285, 62);
+            this.routeTB.Multiline = true;
+            this.routeTB.Name = "routeTB";
+            this.routeTB.ReadOnly = true;
+            this.routeTB.Size = new System.Drawing.Size(493, 323);
+            this.routeTB.TabIndex = 11;
+            this.routeTB.WordWrap = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.routeTB);
+            this.Controls.Add(this.domainUpDown1);
             this.Controls.Add(this.countPointNUD);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.matrixB);
             this.Controls.Add(this.calculateB);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.deliveryTB);
             this.Controls.Add(deliveryL);
             this.Controls.Add(this.issueL);
             this.Controls.Add(this.issueTB);
@@ -200,11 +230,13 @@
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.TextBox issueTB;
         private System.Windows.Forms.Label issueL;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox deliveryTB;
         private System.Windows.Forms.Button calculateB;
         private System.Windows.Forms.Button matrixB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown countPointNUD;
+        private System.Windows.Forms.DomainUpDown domainUpDown1;
+        private System.Windows.Forms.TextBox routeTB;
     }
 }
 

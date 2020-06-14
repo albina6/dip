@@ -17,19 +17,19 @@ namespace genAlg1
     }
     public partial class MatrixForm : Form
     {
-        private double[,] matrix;
+        private int[,] matrix;
 
         private bool flagFull;
         private int sizeMatrix;
         private DataGridView dataGridView = new DataGridView();
-        
+
         public MatrixForm()
         {
             //this.Load += new EventHandler(MatrixForm_Load);
             InitializeComponent();
         }
 
-        public MatrixForm(double [,] matrix,bool flagFull)
+        public MatrixForm(int[,] matrix, bool flagFull)
         {
             this.matrix = matrix;
             this.flagFull = flagFull;
@@ -43,17 +43,17 @@ namespace genAlg1
             recordDataDGV();
         }
 
-      //  private void dataGridView_Validating(object sender, DataGridViewCellFormattingEventArgs e)
+        //  private void dataGridView_Validating(object sender, DataGridViewCellFormattingEventArgs e)
         private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e != null)
             {
-                
+
                 try
                 {
-                    if (Convert.ToDouble(e.Value) > 0)
-                       // e.Value = DateTime.Parse(e.Value.ToString()).ToLongDateString();
-                    e.FormattingApplied = true;
+                    if (Convert.ToInt32(e.Value) > 0)
+                        // e.Value = DateTime.Parse(e.Value.ToString()).ToLongDateString();
+                        e.FormattingApplied = true;
                     else
                         Console.WriteLine("{0}, значение должно быть >0", e.Value.ToString());
 
@@ -66,9 +66,9 @@ namespace genAlg1
         }
         private void SetupDataGridView()
         {
-            this.Controls.Add(dataGridView);
+            //this.Controls.Add(dataGridView);
             dataGridView.ColumnCount = sizeMatrix;
-            dataGridView.RowCount = sizeMatrix;
+            dataGridView.RowCount = sizeMatrix + 1;// нумерация с 1, потому что количество
 
             dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
             dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -79,20 +79,23 @@ namespace genAlg1
             //dataGridView.RowHeadersDefaultCellStyle.ForeColor = Color.White;
             //dataGridView.RowHeadersDefaultCellStyle.Font =
             //    new Font(dataGridView.Font, FontStyle.Bold);
-           // dataGridView.RowHeadersDefaultCellStyle.
+            //dataGridView.RowHeadersDefaultCellStyle.
 
             dataGridView.Name = "dataGridView";
-            dataGridView.Location = new Point(10, 10);
-           // dataGridView.Margin= new margi (20);
+            //
 
-            //dataGridView.Size = new Size(500, 500);
+            //dataGridView.Location = new Point(10, 50);
+            //dataGridView.Margin= new Padding (20);
+
+            //dataGridView.Size = new si
             dataGridView.AutoSizeRowsMode =
                 DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView.ColumnHeadersBorderStyle =
                 DataGridViewHeaderBorderStyle.Single;
             dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dataGridView.RowHeadersVisible = true;
-            dataGridView.ColumnHeadersVisible = true;
+            // dataGridView.
+            //dataGridView.RowHeadersVisible = true;
+            //dataGridView.ColumnHeadersVisible = true;
             //dataGridView.GridColor = Color.Black;
             ////dataGridView.Rows.
 
@@ -109,6 +112,7 @@ namespace genAlg1
             dataGridView.Dock = DockStyle.Fill;
             dataGridView.AllowUserToAddRows = false;
 
+            this.Controls.Add(dataGridView);
             //dataGridView.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView_CellFormatting);
         }
 
@@ -122,15 +126,8 @@ namespace genAlg1
                 }
             }
         }
-       
 
-        private void новыйToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            dataGridView.Rows.Clear();
-            SetupDataGridView();
-        }
-
-        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveB_Click(object sender, EventArgs e)
         {
             for (int colum = 0; colum < sizeMatrix; colum++)
             {
@@ -138,7 +135,12 @@ namespace genAlg1
                 {
                     try
                     {
-                        matrix[colum, row] = Convert.ToDouble(dataGridView[colum, row].Value);
+                        if (colum == row)
+                        {
+                            matrix[colum, row] = 0;
+                            continue;
+                        }
+                        matrix[colum, row] = Convert.ToInt32(dataGridView[colum, row].Value);
                         if (matrix[colum, row] <= 0)
                         {
                             flagFull = false;
@@ -146,23 +148,38 @@ namespace genAlg1
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("{0}, данные в ячейке не валидны," +
-                            " введите стоимость пути.", dataGridView[colum, row].Value.ToString());
+                        Console.WriteLine("{0}, данные в ячейке - {1},{2} не валидны," +
+                            " введите стоимость пути.", dataGridView[colum, row].Value.ToString(), colum, row);
                     }
 
                 }
             }
+
             if (!flagFull)
             {
                 //добавишь потом форму да/нет
                 SaveQuestionForm saveQF = new SaveQuestionForm();
                 saveQF.ShowDialog();
                 SaveBoolEvent saveB = saveQF.SaveBE;
-                
 
                 Console.WriteLine("Таблица не заполнена, хотите сохранить изменения?");
             }
-            //отправка матрицы и флага на главную форму
+        }
+
+        private void clearB_Click(object sender, EventArgs e)
+        {
+            dataGridView.Rows.Clear();
+            SetupDataGridView();
+        }
+
+        private void новыйToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

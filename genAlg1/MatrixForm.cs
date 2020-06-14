@@ -43,7 +43,7 @@ namespace genAlg1
             recordDataDGV();
         }
 
-        private void dataGridView_Validating(object sender, DataGridViewCellFormattingEventArgs e)
+      //  private void dataGridView_Validating(object sender, DataGridViewCellFormattingEventArgs e)
         private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e != null)
@@ -143,7 +143,7 @@ namespace genAlg1
                         {
                             flagFull = false;
                         }
-                    
+                    }
                     catch (FormatException)
                     {
                         Console.WriteLine("{0}, данные в ячейке не валидны," +

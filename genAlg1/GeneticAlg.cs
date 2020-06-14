@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace genAlg1
 {
     class GeneticAlg
-{
+    {
         private int[,] matrixWeight;
         //private int[] route;
         private int sizeMatrix, sizePopulation;
@@ -241,7 +241,7 @@ namespace genAlg1
             }
 
         }
-        private int[] reversMutation(int[] route)
+        private void reversMutation(int[] route)
         {
             int L, R;
             int sizeRout = route.Length;
@@ -261,7 +261,7 @@ namespace genAlg1
                 routeMutation[i] = route[i];
             }
             routeMutation[0] = Weight(routeMutation);
-            return routeMutation;
+            newPopulation.Add(routeMutation);
         }
         private int compareRoutes(int[] x, int[] y)
         {
@@ -307,7 +307,5 @@ namespace genAlg1
             }
 
         }
-
-        
     }
 }

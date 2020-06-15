@@ -40,13 +40,11 @@
             this.deliveryTB = new System.Windows.Forms.TextBox();
             this.calculateB = new System.Windows.Forms.Button();
             this.matrixB = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.countPointNUD = new System.Windows.Forms.NumericUpDown();
-            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
             this.routeTB = new System.Windows.Forms.TextBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             deliveryL = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.countPointNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // deliveryL
@@ -65,7 +63,7 @@
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(776, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -82,21 +80,21 @@
             // новыйToolStripMenuItem
             // 
             this.новыйToolStripMenuItem.Name = "новыйToolStripMenuItem";
-            this.новыйToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.новыйToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.новыйToolStripMenuItem.Text = "Новый";
             this.новыйToolStripMenuItem.Click += new System.EventHandler(this.новыйToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
@@ -105,12 +103,13 @@
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
+            this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // issueTB
             // 
             this.issueTB.Location = new System.Drawing.Point(16, 62);
             this.issueTB.Name = "issueTB";
-            this.issueTB.Size = new System.Drawing.Size(171, 20);
+            this.issueTB.Size = new System.Drawing.Size(168, 20);
             this.issueTB.TabIndex = 1;
             // 
             // issueL
@@ -125,19 +124,19 @@
             // deliveryTB
             // 
             this.deliveryTB.AcceptsReturn = true;
-            this.deliveryTB.Location = new System.Drawing.Point(16, 102);
+            this.deliveryTB.Location = new System.Drawing.Point(16, 101);
             this.deliveryTB.Multiline = true;
             this.deliveryTB.Name = "deliveryTB";
             this.deliveryTB.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.deliveryTB.Size = new System.Drawing.Size(168, 135);
+            this.deliveryTB.Size = new System.Drawing.Size(168, 224);
             this.deliveryTB.TabIndex = 4;
             this.deliveryTB.WordWrap = false;
             // 
             // calculateB
             // 
-            this.calculateB.Location = new System.Drawing.Point(16, 273);
+            this.calculateB.Location = new System.Drawing.Point(16, 360);
             this.calculateB.Name = "calculateB";
-            this.calculateB.Size = new System.Drawing.Size(165, 23);
+            this.calculateB.Size = new System.Drawing.Size(168, 23);
             this.calculateB.TabIndex = 5;
             this.calculateB.Text = "Построение маршрута";
             this.calculateB.UseVisualStyleBackColor = true;
@@ -145,63 +144,40 @@
             // 
             // matrixB
             // 
-            this.matrixB.Location = new System.Drawing.Point(16, 244);
+            this.matrixB.Location = new System.Drawing.Point(16, 331);
             this.matrixB.Name = "matrixB";
-            this.matrixB.Size = new System.Drawing.Size(171, 23);
+            this.matrixB.Size = new System.Drawing.Size(168, 23);
             this.matrixB.TabIndex = 6;
-            this.matrixB.Text = "Матрица";
+            this.matrixB.Text = "Редактирование матрицы";
             this.matrixB.UseVisualStyleBackColor = true;
             this.matrixB.Click += new System.EventHandler(this.matrixB_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 303);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Количество пунктов";
-            // 
-            // countPointNUD
-            // 
-            this.countPointNUD.Location = new System.Drawing.Point(16, 319);
-            this.countPointNUD.Name = "countPointNUD";
-            this.countPointNUD.Size = new System.Drawing.Size(120, 20);
-            this.countPointNUD.TabIndex = 9;
-            this.countPointNUD.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // domainUpDown1
-            // 
-            this.domainUpDown1.Location = new System.Drawing.Point(16, 365);
-            this.domainUpDown1.Name = "domainUpDown1";
-            this.domainUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.domainUpDown1.TabIndex = 10;
-            this.domainUpDown1.Text = "domainUpDown1";
             // 
             // routeTB
             // 
             this.routeTB.AcceptsReturn = true;
-            this.routeTB.Location = new System.Drawing.Point(285, 62);
+            this.routeTB.Location = new System.Drawing.Point(237, 46);
             this.routeTB.Multiline = true;
             this.routeTB.Name = "routeTB";
             this.routeTB.ReadOnly = true;
-            this.routeTB.Size = new System.Drawing.Size(493, 323);
+            this.routeTB.Size = new System.Drawing.Size(493, 339);
             this.routeTB.TabIndex = 11;
             this.routeTB.WordWrap = false;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "txt";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "txt";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(776, 425);
             this.Controls.Add(this.routeTB);
-            this.Controls.Add(this.domainUpDown1);
-            this.Controls.Add(this.countPointNUD);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.matrixB);
             this.Controls.Add(this.calculateB);
             this.Controls.Add(this.deliveryTB);
@@ -211,10 +187,9 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Расчет маршрута близкого к оптимальному";
+            this.Text = "Поиск рационального маршрута";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.countPointNUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,10 +208,9 @@
         private System.Windows.Forms.TextBox deliveryTB;
         private System.Windows.Forms.Button calculateB;
         private System.Windows.Forms.Button matrixB;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown countPointNUD;
-        private System.Windows.Forms.DomainUpDown domainUpDown1;
         private System.Windows.Forms.TextBox routeTB;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

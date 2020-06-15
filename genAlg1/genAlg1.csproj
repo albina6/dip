@@ -53,6 +53,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MatrixError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatrixError.Designer.cs">
+      <DependentUpon>MatrixError.cs</DependentUpon>
+    </Compile>
     <Compile Include="MatrixForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatrixError.resx">
+      <DependentUpon>MatrixError.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MatrixForm.resx">
       <DependentUpon>MatrixForm.cs</DependentUpon>

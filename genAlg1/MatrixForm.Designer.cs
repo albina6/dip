@@ -60,7 +60,7 @@
             this.Controls.Add(this.clearB);
             this.Controls.Add(this.saveB);
             this.Name = "MatrixForm";
-            this.Text = "Матрица весов";
+            this.Text = "Матрица стоимости";
             this.ResumeLayout(false);
 
         }

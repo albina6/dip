@@ -18,7 +18,7 @@ namespace genAlg1
     public partial class MatrixForm : Form
     {
         private int[,] matrix;
-
+       // private *Form *form;
         private bool flagFull;
         private int sizeMatrix;
         private DataGridView dataGridView = new DataGridView();
@@ -28,10 +28,13 @@ namespace genAlg1
             //this.Load += new EventHandler(MatrixForm_Load);
             InitializeComponent();
         }
+        public void  Matrix(int [,] matrix)
+        {
 
+        }
         public MatrixForm(int[,] matrix, bool flagFull)
         {
-            this.matrix = matrix;
+            this.matrix = (int[,])matrix.Clone();
             this.flagFull = flagFull;
             this.sizeMatrix = matrix.GetLength(0);
             this.Load += new EventHandler(MatrixForm_Load);
@@ -66,19 +69,20 @@ namespace genAlg1
         }
         private void SetupDataGridView()
         {
-            //this.Controls.Add(dataGridView);
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToAddRows = false;
             dataGridView.ColumnCount = sizeMatrix;
-            dataGridView.RowCount = sizeMatrix + 1;// нумерация с 1, потому что количество
+            dataGridView.RowCount = sizeMatrix ;// нумерация с 1, потому что количество
 
             dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
             dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridView.ColumnHeadersDefaultCellStyle.Font =
                 new Font(dataGridView.Font, FontStyle.Bold);
 
-            //dataGridView.RowHeadersDefaultCellStyle.BackColor = Color.Navy;
-            //dataGridView.RowHeadersDefaultCellStyle.ForeColor = Color.White;
-            //dataGridView.RowHeadersDefaultCellStyle.Font =
-            //    new Font(dataGridView.Font, FontStyle.Bold);
+            dataGridView.RowHeadersDefaultCellStyle.BackColor = Color.Navy;
+            dataGridView.RowHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView.RowHeadersDefaultCellStyle.Font =
+                new Font(dataGridView.Font, FontStyle.Bold);
             //dataGridView.RowHeadersDefaultCellStyle.
 
             dataGridView.Name = "dataGridView";
@@ -110,8 +114,8 @@ namespace genAlg1
             dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridView.MultiSelect = false;
             dataGridView.Dock = DockStyle.Fill;
-            dataGridView.AllowUserToAddRows = false;
-
+            
+            //recordDataDGV();
             this.Controls.Add(dataGridView);
             //dataGridView.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView_CellFormatting);
         }
@@ -129,6 +133,7 @@ namespace genAlg1
 
         private void saveB_Click(object sender, EventArgs e)
         {
+            flagFull = true;
             for (int colum = 0; colum < sizeMatrix; colum++)
             {
                 for (int row = 0; row < sizeMatrix; row++)
@@ -155,7 +160,15 @@ namespace genAlg1
                 }
             }
 
-            if (!flagFull)
+            if (flagFull)
+            {
+                MainForm mainForm = (MainForm)this.Owner;
+                mainForm.Matrix(matrix);
+                mainForm.FullFlag(flagFull);
+                this.Close();
+                // закрытие формы и переход в главную форму
+            }
+            else
             {
                 //добавишь потом форму да/нет
                 SaveQuestionForm saveQF = new SaveQuestionForm();

@@ -104,9 +104,9 @@ namespace genAlg1
             int weight = 0;
             for (int i = 2; i < sizeMatrix; i++)
             {
-                weight += matrixWeight[ route[i], route[i - 1]];
+                weight += matrixWeight[ route[i-1], route[i]];
             }
-            weight += matrixWeight[ route[1],0] + matrixWeight[0,route[sizeMatrix - 1]];//y,x
+            weight += matrixWeight[ 0, route[1]] + matrixWeight[route[sizeMatrix - 1], 0];//
 
             return weight;
         }

@@ -126,7 +126,7 @@ namespace genAlg1
             {
                 for (int row = 0; row < sizeMatrix; row++)
                 {
-                    dataGridView[colum, row].Value = matrix[colum, row];
+                    dataGridView[colum, row].Value = matrix[row, colum];
                 }
             }
         }
@@ -142,11 +142,11 @@ namespace genAlg1
                     {
                         if (colum == row)
                         {
-                            matrix[colum, row] = 0;
+                            matrix[row, colum] = 0;
                             continue;
                         }
-                        matrix[colum, row] = Convert.ToInt32(dataGridView[colum, row].Value);
-                        if (matrix[colum, row] <= 0)
+                        matrix[row, colum] = Convert.ToInt32(dataGridView[colum, row].Value);
+                        if (matrix[row, colum] <= 0)
                         {
                             flagFull = false;
                         }
